@@ -46,7 +46,7 @@ public class RBDynamicLabel: UILabel {
         super.init(coder: aDecoder)
         setUp()
     }
-    private func setUp() {a
+    private func setUp() {
         self.setValue(0, forKey: RBDynamicLabel.kNumberOfLines)
         addConstraints()
     }

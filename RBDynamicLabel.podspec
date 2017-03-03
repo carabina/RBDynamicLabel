@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
 s.name             = 'RBDynamicLabel'
-s.version          = '0.1.0'
+s.version          = '1.0'
 s.summary          = 'A label which will dynamically adjust its height depending upon the length of the text,'
 
 s.description      =  'Set a top height constraint and trailing and leading constraints and the height will take care of itself.'

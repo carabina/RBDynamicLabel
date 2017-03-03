@@ -8,22 +8,22 @@
 import UIKit
 
 
-class RBDynamicLabel: UILabel {
+public class RBDynamicLabel: UILabel {
     
+    private static let kNumberOfLines = "numberOfLines"
     private lazy var heightOfLabel:NSLayoutConstraint = {
         return NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: self.bounds.height)
     }()
     private lazy var MAX_SIZE:CGSize = {
         return CGSize(width: self.bounds.size.width, height: CGFloat.greatestFiniteMagnitude)
     }()
-    override var text: String? {
+    override public var text: String? {
         didSet {
             getNewSizeOfLabel()
         }
     }
     private func getNewSizeOfLabel() {
         heightOfLabel.constant = getNewRect(fromMaxSize: MAX_SIZE).height
-        
     }
     private func getNewRect(fromMaxSize maxSize: CGSize) -> CGSize {
         let attributedString = NSAttributedString(string: text!, attributes: [NSFontAttributeName:self.font])
@@ -38,13 +38,16 @@ class RBDynamicLabel: UILabel {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setUp()
+        
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        setUp()
     }
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    private func setUp() {a
+        self.setValue(0, forKey: RBDynamicLabel.kNumberOfLines)
         addConstraints()
     }
     
